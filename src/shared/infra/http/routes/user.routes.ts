@@ -1,17 +1,14 @@
-import { Router } from 'express';
-
+import { Router } from "express";
+import { CreateUserController } from "../../../../modules/user/useCases/createUser/CreateUserController";
+import { GetCurrentCoinsController } from "../../../../modules/user/useCases/getCurrentCoins/GetCurrentCoinsController";
 
 const userRoutes = Router();
 
-userRoutes.post('/signup', (req, res) => {
+const createUserController = new CreateUserController();
+const getCurrentCoins = new GetCurrentCoinsController();
 
+userRoutes.post("/", createUserController.handle);
 
-    console.log(req.body);
-
-
-    res.status(201).send();
-
-});
+userRoutes.get("/coins", getCurrentCoins.handle);
 
 export { userRoutes };
-
