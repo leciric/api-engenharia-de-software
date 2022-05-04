@@ -7,6 +7,8 @@ Repositório com intuito de melhorar entendimento sobre engenharia de software e
 NodeJS (Express), Typescript, Prisma(ORM) e PostgreSQL 
 
 ## Integrantes
-Leandro Ciric de Souza RA: 171870
-Lucas Nobrega RA: 
-Gabriel Almeida Rolle RA: 171349
+Leandro Ciric de Souza RA: 171870 <br>
+Lucas Nobrega RA: 180505 <br>
+Gabriel Almeida Rolle RA: 171349 <br>
+Daniele dos Santos Rosa RA: 111706 <br>
+Matheus Lima RA: 180018 <br>
