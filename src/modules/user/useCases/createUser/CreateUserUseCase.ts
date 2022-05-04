@@ -16,8 +16,8 @@ class CreateUserUseCase {
 
   async execute({ name, email, password }: IRequest): Promise<void> {
     await this.userRepository.create({ name, email, password });
-    console.log(name, email, password);
   }
 }
 
 export { CreateUserUseCase };
+

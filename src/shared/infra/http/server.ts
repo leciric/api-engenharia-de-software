@@ -1,17 +1,18 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
-import "reflect-metadata";
-import "express-async-errors";
-import "dotenv/config";
-
-import express from "express";
 import cors from "cors";
-
+import "dotenv/config";
+import express from "express";
+import "express-async-errors";
+import "reflect-metadata";
+//@ts-ignore
 import swaggerUi from "swagger-ui-express";
+import "../../container";
+import { router } from "./routes";
 // @ts-ignore
 import swaggerFile from "./swagger.json";
-import "../../container";
 
-import { router } from "./routes";
+
+
 
 const app = express();
 
