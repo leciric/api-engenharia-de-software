@@ -1,4 +1,4 @@
-import { User } from "@prisma/client";
+import { User } from "../../../../entities/User";
 import { UserRepositoryInMemory } from "../../repositories/in-memory/UserRepositoryInMemory";
 import { IUserRepository } from "../../repositories/IUserRepository";
 
