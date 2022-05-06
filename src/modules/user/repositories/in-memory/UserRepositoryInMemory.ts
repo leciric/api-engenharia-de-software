@@ -9,7 +9,11 @@ class UserRepositoryInMemory implements IUserRepository{
     async create({ name, email, password }: ICreateUserDTO): Promise<void> {
         const user:User = {id: '112222', name, email, password, coins: 50 };
 
-        this.users.push(user);
+        const alreadyExists = this.users.find(item => item.email === email);
+
+        if(!alreadyExists){
+            this.users.push(user);
+        }
     }
     async getCurrentCoins(email: string): Promise<{ coins: number; }> {
         const user = this.users.find(item => item.email === email);

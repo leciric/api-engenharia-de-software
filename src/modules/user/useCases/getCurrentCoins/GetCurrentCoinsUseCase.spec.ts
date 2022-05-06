@@ -21,5 +21,12 @@ describe("Get user coins", () => {
 
     expect(userCoins.coins).toEqual(50);
   });
+
+  it("should return -1 if user do not exists", async () => {
+
+    const userCoins = await userRepository.getCurrentCoins("teste@teste.com");
+
+  expect(userCoins.coins).toEqual(-1);
+});
     
 });
