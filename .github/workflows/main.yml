@@ -1,0 +1,35 @@
+# This is a basic workflow to help you get started with Actions
+
+name: CI
+
+# Controls when the workflow will run
+on:
+  # Triggers the workflow on push or pull request events but only for the main branch
+  push:
+    branches: [ main ]
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  postgres-job:
+    runs-on: ubuntu-latest
+    container: node:latest
+    
+    services:
+      image: postgres:latest
+      
+      env:
+        POSTGRES_DB: postgres
+        POSTGRES_PASSWORD: 123456
+        POSTGRES_PORT: 5432
+        POSTGRES_USER: postgres
+      ports:
+        - 5432:5432
+      options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+      steps:
+        - name: Install API packages
+          run: |
+            yarn install
