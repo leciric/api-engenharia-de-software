@@ -30,7 +30,19 @@ jobs:
             --health-interval 10s
             --health-timeout 5s
             --health-retries 5
-    steps:
-      - name: Install API packages
-        run: |
-          yarn install
+  build:
+      runs-on: ubuntu-latest
+
+      steps:
+        - uses: actions/checkout@v2
+        
+        - name: Setup Nodejs
+          uses: actions/setup-node@v2
+          with:
+            node-version: 16.x
+            
+        - name: Install Dependencies
+          run: yarn
+          
+        - name: Build
+          run: yarn build
