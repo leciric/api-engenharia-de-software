@@ -1,7 +1,6 @@
 /* eslint-disable import/no-extraneous-dependencies */
 /* eslint-disable @typescript-eslint/no-var-requires */
 const NodeEnvironment = require("jest-environment-node").default;
-const { v4: uuid } = require("uuid");
 const { execSync } = require("child_process");
 const { resolve } = require("path");
 const { Client } = require("pg");
@@ -15,7 +14,7 @@ require("dotenv").config({
 class CustomEnvironment extends NodeEnvironment {
   constructor(config) {
     super(config);
-    this.schema = `code_schema_${uuid()}`;
+    this.schema = `code_schema_test`;
     console.log("schemas", this.schema);
     this.connectionString = `${process.env.DATABASE_URL}${this.schema}`;
   }
@@ -25,8 +24,7 @@ class CustomEnvironment extends NodeEnvironment {
     this.global.process.env.DATABASE_URL = this.connectionString;
 
     // Rodar as migrations
-    execSync(`${prismaCli} migrate deploy`);
-    execSync(`${prismaCli} generate`);
+    execSync(`${prismaCli} migrate dev`);
   }
 
   async teardown() {
