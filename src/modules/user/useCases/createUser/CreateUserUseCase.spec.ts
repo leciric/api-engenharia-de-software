@@ -14,7 +14,7 @@ describe("Create user", () => {
   });
   it("should be able to create a user", async () => {
     const user: User = {
-      id: "12312321",
+      id: 5643234,
       email: "teste@teste.com",
       password: "123",
       name: "Teste",
@@ -30,7 +30,7 @@ describe("Create user", () => {
 
   it("should not be able to create a user that already exists", async () => {
     const user: User = {
-      id: "12312321",
+      id: 123444,
       email: "teste@teste.com",
       password: "123",
       name: "Teste",
