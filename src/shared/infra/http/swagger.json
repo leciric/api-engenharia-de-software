@@ -59,9 +59,27 @@
         "requestBody": {
         },
         "responses": {
-          "201": {
-            "description": "Created"
+          "200": {
+            "description": "Users coins",
+            "responseBody": {
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "coins": {
+                        "type": "number"
+                      }
+                    },
+                    "example": {
+                      "coins": 50
+                    }
+                  }
+                }
+              }
+            }
           }
+          
         }
       }
     }
