@@ -19,12 +19,12 @@ class UserRepository implements IUserRepository {
     });
   }
   async getCurrentCoins(email: string): Promise<{ coins: number }> {
-    const user = await prisma.user.findUnique({ where: { email } });
+    const user = await prisma.user.findFirst({ where: { email } });
 
     return { coins: user?.coins ?? 0 };
   }
   async getByEmail(email: string): Promise<User | undefined | null> {
-    const user = await prisma.user.findUnique({ where: { email } });
+    const user = await prisma.user.findFirst({ where: { email } });
 
     return user;
   }
