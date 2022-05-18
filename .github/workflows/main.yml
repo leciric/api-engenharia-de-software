@@ -10,7 +10,7 @@ on:
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  postgres-job:
+  runner-job:
     runs-on: ubuntu-latest
     container: node:latest
     
@@ -19,9 +19,7 @@ jobs:
         image: postgres:latest
 
         env:
-          POSTGRES_DB: postgres
           POSTGRES_PASSWORD: 123456
-          POSTGRES_PORT: 5432
           POSTGRES_USER: postgres
         ports:
           - 5432:5432
