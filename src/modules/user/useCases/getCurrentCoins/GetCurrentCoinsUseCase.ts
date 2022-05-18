@@ -21,8 +21,6 @@ class GetCurrentCoinsUseCase {
 
     const coins = await this.userRepository.getCurrentCoins(email);
 
-    console.log(coins);
-
     return coins;
   }
 }
