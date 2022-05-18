@@ -1,0 +1,37 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
+import cors from "cors";
+import "dotenv/config";
+import express, { NextFunction, Response, Request } from "express";
+
+import "express-async-errors";
+import "reflect-metadata";
+import swaggerUi from "swagger-ui-express";
+import "../../container";
+import { router } from "./routes";
+// @ts-ignore
+import swaggerFile from "./swagger.json";
+
+const app = express();
+
+app.use(express.json());
+
+app.use(cors());
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerFile));
+
+app.use(router);
+
+app.use(
+  (err: Error, request: Request, response: Response, next: NextFunction) => {
+    if (err instanceof Error) {
+      return response.status(400).json({
+        message: err.message
+      });
+    }
+    return response.status(500).json({
+      status: "error",
+      message: `Internal server error - ${err}`
+    });
+  }
+);
+
+export { app };

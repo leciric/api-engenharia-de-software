@@ -9,6 +9,6 @@ const getCurrentCoins = new GetCurrentCoinsController();
 
 userRoutes.post("/", createUserController.handle);
 
-userRoutes.get("/coins", getCurrentCoins.handle);
+userRoutes.get("/coins/:email", getCurrentCoins.handle);
 
 export { userRoutes };

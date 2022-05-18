@@ -1,4 +1,4 @@
-import { User } from "@prisma/client";
+import { User } from "../../../../../entities/User";
 import { prisma } from "../../../../../shared/infra/prisma/client";
 import { ICreateUserDTO } from "../../../dtos/ICreateUserDTO";
 import { IUserRepository } from "../../../repositories/IUserRepository";
@@ -16,14 +16,18 @@ class UserRepository implements IUserRepository {
         name,
         password
       }
-    })
+    });
   }
- async getCurrentCoins(email: string): Promise<{ coins: number }> {
-   const user = await prisma.user.findUnique({ where: { email } });
+  async getCurrentCoins(email: string): Promise<{ coins: number }> {
+    const user = await prisma.user.findUnique({ where: { email } });
 
-   return {coins: user?.coins ?? 0}
+    return { coins: user?.coins ?? 0 };
+  }
+  async getByEmail(email: string): Promise<User | undefined | null> {
+    const user = await prisma.user.findUnique({ where: { email } });
+
+    return user;
   }
 }
 
 export { UserRepository };
-
