@@ -1,6 +1,6 @@
 /* eslint-disable no-constructor-return */
 class User {
-  id?: string;
+  id?: number;
   name!: string;
   email!: string;
   password!: string;
