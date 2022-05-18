@@ -6,7 +6,7 @@ import "reflect-metadata";
 class UserRepositoryInMemory implements IUserRepository {
   users: User[] = [];
   async create({ name, email, password }: ICreateUserDTO): Promise<void> {
-    const user: User = { id: 123, name, email, password, coins: 50 };
+    const user: User = { id: "123", name, email, password, coins: 50 };
 
     const alreadyExists = this.users.find((item) => item.email === email);
 
