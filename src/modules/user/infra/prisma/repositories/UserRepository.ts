@@ -14,7 +14,8 @@ class UserRepository implements IUserRepository {
       data: {
         email,
         name,
-        password
+        password,
+        coins: 300
       }
     });
   }
